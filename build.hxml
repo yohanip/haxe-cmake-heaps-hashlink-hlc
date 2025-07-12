@@ -1,0 +1,17 @@
+-cp src
+-D analyzer-optimize
+--dce full
+-main Main
+
+-lib heaps
+-lib hlsdl
+
+-D windowSize=300x300
+
+--each
+
+--next
+-hl out/c/main.c
+
+--next
+-hl out/main.hl
