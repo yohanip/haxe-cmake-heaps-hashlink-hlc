@@ -1,3 +1,7 @@
+import hxd.snd.Channel;
+import hxd.res.Sound;
+import hxd.snd.Manager;
+import haxe.Timer;
 import hxd.BitmapData;
 import h2d.TileGroup;
 import h2d.Bitmap;
@@ -19,6 +23,21 @@ class App extends hxd.App {
 		text.textAlign = Center;
 
 		text.setPosition(s2d.width/2, s2d.height/2);
+
+		//var music = hxd.Res.Spring_Village;
+		var music = hxd.Res.samples_sound_res_music_loop;
+		var thunder = hxd.Res.mixkit_strong_close_thunder_explosion_1300;
+
+		var musicChannel = music.play(true);
+		trace("music is playing");
+
+		musicChannel.onEnd = function() {
+			trace("Loop");
+		}
+
+		Timer.delay(()->thunder.play(), 3_000);
+
+		trace('ogg supported: ${Sound.supportedFormat(OggVorbis)}');
 	}
 }
 
